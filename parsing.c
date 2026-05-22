@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariagraciaramirezku <mariagraciaramire    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:03:02 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/21 17:40:09 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/05/22 16:48:05 by mariagracia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ int	fonction_simple(char *av)
 		if (ft_verify_digit(av))
 			int_assignation(av);
 		else
-			return (write(1, "error", 5), 0);
-		j++;
+			return (write(1, "error", 5), 0);    //here we need to add the int *numbers.
+		j++;										// we dont need to do the fonction again, probabli that 
+													// should be the default
 	}
 }
 
 int	fonction_medium(void)
-{
+{ 
+	//same here we neeed to call the int *numbers
 }
 
 int	fonction_complex(void)
@@ -74,25 +76,20 @@ int	main(int ac, char **av)
 
 	j = 1;
 	i = 0;
-	if (ac > 0)
+	while (av[j] && ac > 0)
 	{
 		if (av[1][i] == '-' && av[1][i + 1] == '-')
 		{
-			if (ft_flag(av[1]) == 0)
+			if (ft_flag(av[1]) == 0)   // here we'l need to deal w int_assignation too
 				return (0);
-			j++;
+		}
+		else if (ft_verify_digit(av[j]))
+		{	
+			int_assignation(av[j]);
 		}
 		else
-			return (0);
-			
-		while (av[j])
-		{
-			if (ft_verify_digit(av[j]))
-				int_assignation(av[j]);
-			else
-				return (write(1, "error", 5), 0);
-			j++;
-		}
+			return (write(1, "error", 5), 0);
+		j++;
 	}
 	return (0);
 }
