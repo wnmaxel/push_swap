@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 17:41:52 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/22 01:45:29 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/05/24 01:25:53 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,8 @@ void    sb(t_list *b)// on lui envoie ladresse de la a pour pouvoir modifier dir
 /// ss (): sa and sb at the same time.
 void    ss(t_list *a, t_list *b)
 {
-    int tmp1;
-    int tmp2;
-    if(!a || !a->next)
-        return;
-    tmp1 = a->content;
-    a->content = a->next->content;
-    a->next->content = tmp1;
-
-    if(!b || !b->next)
-        return;
-    tmp2 = b->content;
-    b->content = b->next->content;
-    b->next->content = tmp2;
+    sa(a);
+    sb(b);
 }
 
 /// pa (push a): Take the first element at the top of b and put it at the top of a.
@@ -130,8 +119,64 @@ void    rr(t_list **a, t_list **b)
 
 /// rra (reverse rotate a): Shift down all elements of stack a by one.
 /// The last element becomes the first one.
+void rra(t_list **a)
+{
+    t_list *tmp1;
+    t_list *tmp2;
+    t_list *tmp3;
+    if(!a)
+        return;
+    tmp1 = *a;
+    tmp2 = *a;
+    while(tmp1->next->next)
+        tmp1 = tmp1->next; //avant dernier node
+    tmp3 = tmp1->next; // dernier
+    tmp3->next = tmp2; // le dernier passe premier
+    tmp1->next = NULL;
+    *a = tmp3;
+}
+
+void rra(t_list **a)// avec previous warningggg warninggg
+{
+    t_list *tmp1;
+    t_list *tmp2;
+    t_list *tmp3;
+    if(!a)
+        return;
+    tmp1 = *a;
+    tmp2 = *a;
+    while(tmp1->next->next)
+        tmp1 = tmp1->next; //avant dernier node
+    tmp3 = tmp1->next; // dernier
+    tmp3->next = tmp2; // le dernier passe premier
+    tmp3->prev = NULL; // le nouveau premier pointe sur null en tant que previous
+    tmp1->next = NULL; // le nouveau dernier pointe sur NULL en tant que next
+}
+
+
 
 /// rrb (reverse rotate b): Shift down all elements of stack b by one.
 // The last element becomes the first one.
+void rrb(t_list **b)
+{
+    t_list *tmp1;
+    t_list *tmp2;
+    t_list *tmp3;
+    if(!b)
+        return;
+    tmp1 = *b;
+    tmp2 = *b;
+    while(tmp1->next->next)
+        tmp1 = tmp1->next; //bvbnt dernier node
+    tmp3 = tmp1->next; // dernier
+    tmp3->next = tmp2; // le dernier pbsse premier
+    tmp1->next = NULL;
+    *b = tmp3;
+}
 
 /// rrr (): rra and rrb at the same time
+void    rrr(t_list **a, t_list **b)
+{
+    rra(a);
+    rrb(b);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_assignations.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariagraciaramirezku <mariagraciaramire    +#+  +:+       +#+        */
+/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:40:10 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/22 16:55:22 by mariagracia      ###   ########.fr       */
+/*   Updated: 2026/05/24 01:31:57 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,32 @@
 
 int	int_assignation(char *str)
 {
-	int	n;
+	int n;
 
 	n = ft_atoi(str);
 	ft_lstnew(n);
+}
+
+void	ft_putstr(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] && s1[i] == s2[i])
+		i++;
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 t_list	*ft_lstnew(int content)
@@ -34,7 +56,7 @@ t_list	*ft_lstnew(int content)
 
 int	ft_atoi(const char *nptr)
 {
-	int		i;
+	int	i;
 	long	sign;
 	long	nb;
 
@@ -55,18 +77,4 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return (nb * sign);
-}
-
-int	ft_verify_digit(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(is_alpha(str[i])))
-			return (0);
-		i++;
-	}
-	return (1);
 }
