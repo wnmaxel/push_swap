@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 17:41:52 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/24 01:25:53 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/05/25 11:44:51 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ void    pa(t_list *a, t_list *b)
 {
     if(!b)
         return;
-    b->content
-    
+    b->content;
 }
 
 /// pb (push b): Take the first element at the top of a and put it at the top of b.
@@ -136,7 +135,7 @@ void rra(t_list **a)
     *a = tmp3;
 }
 
-void rra(t_list **a)// avec previous warningggg warninggg
+/*void rra(t_list **a)// avec previous warningggg warninggg
 {
     t_list *tmp1;
     t_list *tmp2;
@@ -151,7 +150,7 @@ void rra(t_list **a)// avec previous warningggg warninggg
     tmp3->next = tmp2; // le dernier passe premier
     tmp3->prev = NULL; // le nouveau premier pointe sur null en tant que previous
     tmp1->next = NULL; // le nouveau dernier pointe sur NULL en tant que next
-}
+}*/
 
 
 
