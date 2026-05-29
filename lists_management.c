@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lists_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mariagraciaramirezku <mariagraciaramire    +#+  +:+       +#+        */
+/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 12:30:39 by mariagracia       #+#    #+#             */
-/*   Updated: 2026/05/22 15:38:13 by mariagracia      ###   ########.fr       */
+/*   Updated: 2026/05/29 15:01:08 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list	*ft_lstnew(void *content);
-{
-    t_list  *new;
-    
-    new = malloc(sizeof(t_list));
-    if (!new)
-        return (NULL);
-    new->content = new;
-    new->next = NULL;
-    return (new);   
-}
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
@@ -37,12 +25,11 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	end = ft_lstlast(*lst);
 	end->next = new;
+	new->prev = end;
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	t_list *last;
-
 	if (!new)
 		return ;
 	if (!*lst)
@@ -50,8 +37,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	last = *lst;
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new;
+	new->next = *lst;
+	(*lst)->prev = new;
+	*lst = new;
 }

@@ -3,75 +3,94 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/21 15:02:48 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/21 23:21:08 by axweinma         ###   ########.fr       */
+/*   Created: 2026/05/25 14:24:42 by gerramir          #+#    #+#             */
+/*   Updated: 2026/05/25 16:25:13 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+static char	*get_word(const char *s, int start, int end)
 {
-	t_list	*last; 
-
-	if (!new)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	last = *lst;
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new;
-}
-
-int	ft_isalpha(int c)
-{
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
-}
-
-int	ft_verify_digit(char *str)
-{
-	int	i;
+	char	*new;
+	int		i;
 
 	i = 0;
-	while (str[i])
+	new = malloc(end - start + 1);
+	if (!new)
+		return (NULL);
+	while (start < end)
+		new[i++] = s[start++];
+	new[i] = '\0';
+	return (new);
+}
+
+static int	count_words(const char *s, char c)
+{
+	int	i;
+	int	k;
+
+	i = 0;
+	k = 0;
+	while (s[i])
 	{
-		if (!(ft_isalpha(str[i])))
-			return (0);
-		i++;
+		while (s[i] && s[i] == c)
+			i++;
+		if (s[i])
+			k++;
+		while (s[i] && s[i] != c)
+			i++;
 	}
+	return (k);
+}
+
+static void	free_partial(char **res, int k)
+{
+	while (k--)
+		free(res[k]);
+}
+
+static int	fill_split(char **res, char const *s, char c)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	k = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		j = i;
+		while (s[i] && s[i] != c)
+			i++;
+		if (i > j)
+		{
+			res[k] = get_word(s, j, i);
+			if (!res[k])
+				return (free_partial(res, k), 0);
+			k++;
+		}
+	}
+	res[k] = NULL;
 	return (1);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	**ft_split(char const *s, char c)
 {
-	size_t i;
-	size_t len;
+	char	**res;
+	int		words;
 
-	len = ft_strlen((char *)src);
-	if (size == 0)
-		return (len);
-	i = 0;
-	while (src[i] && i < size - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (len);
-}
-
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	res = malloc(sizeof(char *) * (words + 1));
+	if (!res)
+		return (NULL);
+	if (!fill_split(res, s, c))
+		return (free(res), NULL);
+	return (res);
 }

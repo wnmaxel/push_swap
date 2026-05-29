@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/21 23:20:09 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/21 23:20:26 by axweinma         ###   ########.fr       */
+/*   Created: 2026/05/24 23:08:22 by mariagracia       #+#    #+#             */
+/*   Updated: 2026/05/29 17:04:18 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*push_swap(t_data *data)
 {
-	t_list	*last;
-
-	if (!new)
-		return ;
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	last = *lst;
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new;
+	data->
 }
