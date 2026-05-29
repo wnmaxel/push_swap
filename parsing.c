@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:03:02 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/29 15:09:16 by gerramir         ###   ########.fr       */
+/*   Updated: 2026/05/29 18:51:23 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	charto_int(char **num, t_list **numbers)
 			write(2, "Error\n", 6);
 			return ;
 		}
-		*numbers = int_assignation(*numbers, num[j++]);
+		int_assignation(numbers, num[j++]);
 	}
 }
 
@@ -79,6 +79,8 @@ int	main(int ac, char **av)
 	char	**num;
 	int		j;
 
+	if(ac < 2)
+		return (0);
 	data = init();
 	j = 1;
 	data->strat = flag_assignation(av[1], av[2], &data->bench, &j);
@@ -93,38 +95,9 @@ int	main(int ac, char **av)
 			j++;
 		}
 		else
-			data->a = int_assignation(&data->a, av[j++]);
+			int_assignation(&data->a, av[j++]);
 	}
 	push_swap(data);
 	ft_free(data);
 	return (0);
 }
-
-// int	main(int ac, char **av)
-// {
-// 	t_list	*numbers;
-// 	char	**num;
-// 	int		bench;
-// 	int		flag;
-// 	int		j;
-
-// 	numbers = NULL;
-// 	j = 1;
-// 	bench = 0;
-// 	flag = flag_assignation(av[1], av[2], &bench, &j);
-// 	while (av[j])
-// 	{
-// 		if (!(verify_digit_repetition(av[j])))
-// 			return (write(2, "Error\n", 6), 0);
-// 		else if (ft_findc(av[j], ' ' ))
-// 		{
-// 			num = ft_split(av[j], ' ');
-// 			charto_int(num, &numbers);
-// 			j++;
-// 		}
-// 		else
-// 			numbers = int_assignation(numbers, av[j++]);
-// 	}
-// 	push_swap(numbers, bench, flag);
-// 	return (0);
-// }

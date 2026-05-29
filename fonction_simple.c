@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 14:03:46 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/29 14:31:27 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/05/29 18:34:22 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	valid_sort(t_list *a)
 	tmp = a;
 	while (tmp->next)
 	{
-		if (tmp->content > tmp->next->content)
+		if (tmp->num > tmp->next->num)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -30,7 +30,7 @@ t_list	*fonction_simple(t_list *a)
 {
 	while (!valid_sort(a))
 	{
-		if (a->content > a->next->content)
+		if (a->num > a->next->num)
 			sa(a);
 		ra(&a);
 	}
@@ -48,9 +48,9 @@ int main(int ac, char **av)
         return (0);
     while (av[j])
     {
-        *a = int_assignation(av[j]);
+        *a = ft_lstadd_back();
         j++;
     }
     fonction_simple(a);
-    return (0);
+    return (0)cc -Wa
 }

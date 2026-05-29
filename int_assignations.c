@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_assignations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:40:10 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/29 14:53:08 by gerramir         ###   ########.fr       */
+/*   Updated: 2026/05/29 18:31:15 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_list	*ft_lstnew(int content)
 	return (new);
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
 	int		i;
 	long	sign;
@@ -48,7 +48,7 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	if (nb > INT_MAX || nb < INT_MIN)
-		return (NULL);
+		return (0);
 	return (nb * sign);
 }
 
@@ -80,7 +80,7 @@ int	verify_digit_repetition(char *str)
 	return (1);
 }
 
-void	*int_assignation(t_list **numbers, char *str)
+void	int_assignation(t_list **numbers, char *str)
 {
 	int	n;
 

@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 17:41:52 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/27 20:12:17 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:50:34 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void    sa(t_list *a, int print)// on lui envoie ladresse de la a pour pouvoir m
     int tmp1;
     if(!a || !a->next)
         return;
-    tmp1 = a->content;
-    a->content = a->next->content;
-    a->next->content = tmp1;
+    tmp1 = a->num;
+    a->num = a->next->num;
+    a->next->num = tmp1;
     if(print)
         write(1, "sa", 2);
 }
@@ -36,9 +36,9 @@ void    sb(t_list *b, int print)// on lui envoie ladresse de la a pour pouvoir m
     int tmp1;
     if(!b || !b->next)
         return;
-    tmp1 = b->content;
-    b->content = b->next->content;
-    b->next->content = tmp1;
+    tmp1 = b->num;
+    b->num = b->next->num;
+    b->next->num = tmp1;
     if(print)
         write(1, "sa", 2);
 }

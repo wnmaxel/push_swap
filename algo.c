@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 17:41:52 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/25 11:44:51 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/05/29 17:50:58 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void    sa(t_list *a)// on lui envoie ladresse de la a pour pouvoir modifier dir
     int tmp1;
     if(!a || !a->next)
         return;
-    tmp1 = a->content;
-    a->content = a->next->content;
-    a->next->content = tmp1;
+    tmp1 = a->num;
+    a->num = a->next->num;
+    a->next->num = tmp1;
 }
 
 
@@ -34,9 +34,9 @@ void    sb(t_list *b)// on lui envoie ladresse de la a pour pouvoir modifier dir
     int tmp1;
     if(!b || !b->next)
         return;
-    tmp1 = b->content;
-    b->content = b->next->content;
-    b->next->content = tmp1;
+    tmp1 = b->num;
+    b->num = b->next->num;
+    b->next->num = tmp1;
 }
 
 /// ss (): sa and sb at the same time.
@@ -53,7 +53,7 @@ void    pa(t_list *a, t_list *b)
 {
     if(!b)
         return;
-    b->content;
+    b->num;
 }
 
 /// pb (push b): Take the first element at the top of a and put it at the top of b.
