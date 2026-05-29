@@ -26,5 +26,14 @@ size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 size_t				ft_strlen(char *str);
-
+/////////////////////////// functions mouvement
+void				sa(t_list *a);
+void				sb(t_list *b);
+void				ss(t_list *a, t_list *b);
+void				ra(t_list **a);
+void				rb(t_list **b);
+void				rr(t_list **a, t_list **b);
+void				rra(t_list **a);
+void				rrb(t_list **b);
+void				rrr(t_list **a, t_list **b);
 #endif

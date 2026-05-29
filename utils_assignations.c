@@ -6,18 +6,18 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:40:10 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/24 01:31:57 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/05/25 16:21:45 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	int_assignation(char *str)
+t_list	*int_assignation(char *str)
 {
 	int n;
 
 	n = ft_atoi(str);
-	ft_lstnew(n);
+	return(ft_lstnew(n));
 }
 
 void	ft_putstr(char *s)
