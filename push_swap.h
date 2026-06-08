@@ -33,6 +33,7 @@ typedef struct s_data
 {
 	t_list			*a;
 	t_list			*b;
+	t_list			*seen;
 	t_ops			*ops;
 	int				bench;
 	int				strat;
@@ -48,9 +49,10 @@ int					valid_flag(char *av);
 
 t_list				*push_swap(t_data *data);
 
-int					verify_digit_repetition(char *str);
+int					verify_digit_repetition(char *str, t_list **seen);
 int					ft_isdigit(int c);
 int					ft_strcmp(const char *s1, const char *s2);
+int					ft_strncmp(char *s1, char *s2, int len);
 char				**ft_split(char const *s, char c);
 long				ft_atoi(const char *nptr);
 void				int_assignation(t_list **numbers, char *str);

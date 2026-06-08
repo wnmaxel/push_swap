@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:03:02 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/08 14:37:46 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:24:32 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,14 @@ int	flag_assignation(char *s1, char *s2, int *bench, int *index)
 	return (flag);
 }
 
-void	charto_int(char **num, t_list **numbers)
+static void	charto_int(char **num, t_list **numbers, t_list **seen)
 {
 	int	j;
 
 	j = 0;
 	while (num[j])
 	{
-		if (!(verify_digit_repetition(num[j])))
+		if (!(verify_digit_repetition(num[j], seen)))
 		{
 			write(2, "Error\n", 6);
 			return ;
@@ -73,31 +73,42 @@ void	charto_int(char **num, t_list **numbers)
 	}
 }
 
-int	main(int ac, char **av)
+static void	parse_args(int ac, char **av, t_data *data)
 {
-	t_data	*data;
 	char	**num;
 	int		j;
 
-	if(ac < 2)
-		return (0);
-	data = init();
 	j = 1;
-	data->strat = flag_assignation(av[1], av[2], &data->bench, &j);
+	if (ac >= 3 && ft_strncmp(av[1], "--", 2) == 0)
+		data->strat = flag_assignation(av[1], av[2], &data->bench, &j);
+	else if (ft_strncmp(av[1], "--", 2) == 0)
+		data->strat = flag_assignation(av[1], NULL, &data->bench, &j);
 	while (av[j])
 	{
-		if (!(verify_digit_repetition(av[j])))
-			return (write(2, "Error\n", 6), 0);
-		else if (ft_findc(av[j], ' ' ))
+		if (!(verify_digit_repetition(av[j], &data->seen)))
+		{
+			write(2, "Error\n", 6);
+			return ;
+		}
+		else if (ft_findc(av[j], ' '))
 		{
 			num = ft_split(av[j], ' ');
-			charto_int(num, &data->a);
+			charto_int(num, &data->a, &data->seen);
 			j++;
 		}
 		else
 			int_assignation(&data->a, av[j++]);
 	}
-	// push_swap(data);
+}
+
+int	main(int ac, char **av)
+{
+	t_data	*data;
+
+	if (ac < 2)
+		return (0);
+	data = init();
+	parse_args(ac, av, data);
 	ft_free(data);
 	return (0);
 }

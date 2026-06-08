@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lists_management.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 12:30:39 by mariagracia       #+#    #+#             */
-/*   Updated: 2026/06/08 14:26:04 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 18:43:43 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	end->next = new;
 	new->prev = end;
 }
+
 t_list	*ft_lstlast(t_list *lst)
 {
 	if (lst == 0)
@@ -64,7 +65,7 @@ void	ft_putstr(char *s)
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] && s1[i] == s2[i])

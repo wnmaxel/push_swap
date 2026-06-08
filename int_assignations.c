@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_assignations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:40:10 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/08 14:37:23 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 19:27:16 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,18 @@ long	ft_atoi(const char *nptr)
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		nb = nb * 10 + (nptr[i] - '0');
+		if (nb > INT_MAX || nb < INT_MIN)
+			return (0);
 		i++;
 	}
-	if (nb > INT_MAX || nb < INT_MIN)
-		return (0);
 	return (nb * sign);
 }
 
-int	verify_digit_repetition(char *str)
+int	verify_digit_repetition(char *str, t_list **seen)
 {
-	static t_list	*seen;
-	t_list			*tmp;
-	int				n;
-	int				i;
+	t_list	*tmp;
+	int		n;
+	int		i;
 
 	i = 0;
 	if (str[0] == '-')
@@ -69,14 +68,14 @@ int	verify_digit_repetition(char *str)
 		i++;
 	}
 	n = ft_atoi(str);
-	tmp = seen;
+	tmp = *seen;
 	while (tmp)
 	{
 		if (tmp->num == n)
 			return (0);
 		tmp = tmp->next;
 	}
-	ft_lstadd_back(&seen, ft_lstnew(n));
+	ft_lstadd_back(seen, ft_lstnew(n));
 	return (1);
 }
 
