@@ -57,12 +57,16 @@ char				**ft_split(char const *s, char c);
 long				ft_atoi(const char *nptr);
 void				int_assignation(t_list **numbers, char *str);
 void				ft_putstr(char *s);
+int					ft_lstsize(t_list *lst);
+void				ft_lstadd_back(t_list **lst, t_list *new);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 t_list				*ft_lstnew(int content);
-void				ft_lstadd_back(t_list **lst, t_list *new);
 t_list				*ft_lstlast(t_list *lst);
 size_t				ft_strlen(char *str);
 int					ft_findc(char *str, char c);
+//////// algo
+t_list				*fonction_simple(t_list **a);
+int					valid_sort(t_list **a);
 /////// mouvements
 void				sa(t_list *a, int print);
 void				sb(t_list *b, int print);

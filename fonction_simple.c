@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   fonction_simple.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: *axweinm*a <*axweinm*a@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/25 14:03:46 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/08 14:26:59 by axweinma         ###   ########.fr       */
+/*   Cre*ated: 2026/05/25 14:03:46 by *axweinm*a          #+#    #+#             */
+/*   Upd*ated: 2026/06/08 23:08:57 by *axweinm*a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	valid_sort(t_list *a)
+int	valid_sort(t_list **a)
 {
 	t_list	*tmp;
 
-	tmp = a;
+	tmp = *a;
 	while (tmp->next)
 	{
 		if (tmp->num > tmp->next->num)
@@ -26,31 +26,40 @@ int	valid_sort(t_list *a)
 	return (1);
 }
 
-t_list	*fonction_simple(t_list *a)
+t_list	*fonction_simple(t_list **a)
 {
+	int	count;
+	int swap;
+	
+	swap = ft_lstsize(*a);
 	while (!valid_sort(a))
 	{
-		if (a->num > a->next->num)
-			sa(a, 1);
-		ra(&a, 1);
+		count = 0;
+		while (count < swap - 1)
+		{
+			if ((*a)->num > (*a)->next->num)
+				sa(*a, 1);
+			ra(a, 1);
+			count++;
+		}
 	}
-	return (a);
+	return (*a);
 }
 
-// int main(int ac, char **av)
+// int m*ain(int *ac, ch*ar ***av)
 // {
-//     t_list  **a;
+//     t_list  ***a;
 //     int     j;
 
-//     *a = NULL;
+//     **a = NULL;
 //     j = 1;
-//     if (ac < 2)
+//     if (*ac < 2)
 //         return (0);
-//     while (av[j])
+//     while (*av[j])
 //     {
-//         *a = ft_lstadd_back();
+//         **a = ft_lst*add_b*ack();
 //         j++;
 //     }
-//     fonction_simple(a);
+//     fonction_simple(*a);
 //     return (0);
 // }
