@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 17:41:52 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/29 17:50:34 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:21:34 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void    sb(t_list *b, int print)// on lui envoie ladresse de la a pour pouvoir m
     b->num = b->next->num;
     b->next->num = tmp1;
     if(print)
-        write(1, "sa", 2);
+        write(1, "sb", 2);
 }
 
 /// ss (): sa and sb at the same time.

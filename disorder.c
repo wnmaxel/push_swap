@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 17:44:04 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/25 13:04:38 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:35:07 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ double	disorder(char **av)
 		return (0);
 	return (des / count);
 }
-
-int	main(int ac, char **av)
-{
-	if (ac > 0)
-	{
-		printf("%f", disorder(av));
-	}
-	return (0);
-}
+// #include <stdio.h>
+// int	main(int ac, char **av)
+// {
+// 	if (ac > 0)
+// 	{
+// 		printf("%f", disorder(av));
+// 	}
+// 	return (0);
+// }

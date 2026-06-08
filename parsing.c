@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 15:03:02 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/29 18:51:23 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:37:46 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	main(int ac, char **av)
 		else
 			int_assignation(&data->a, av[j++]);
 	}
-	push_swap(data);
+	// push_swap(data);
 	ft_free(data);
 	return (0);
 }

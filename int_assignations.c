@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:40:10 by axweinma          #+#    #+#             */
-/*   Updated: 2026/05/29 18:31:15 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:37:23 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	verify_digit_repetition(char *str)
 		i++;
 	while (str[i])
 	{
-		if (!is_digit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (0);
 		i++;
 	}

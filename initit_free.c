@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initit_free.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/28 16:34:25 by gerramir          #+#    #+#             */
-/*   Updated: 2026/05/29 17:00:41 by gerramir         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:33:07 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ static t_ops	*init_ops(void)
 {
 	t_ops	*operations;
 
+	operations = malloc(sizeof(t_ops));
+	if (!operations)
+		return (NULL);
 	operations->pa = 0;
 	operations->pb = 0;
 	operations->ra = 0;
@@ -56,9 +59,7 @@ t_data	*init(void)
 	data->b = init_node();
 	if (!data->b)
 		return (NULL);
-	data->ops = init_ops();
-	if (!data->ops)
-		return (NULL);
+	init_ops();
 	data->bench = 0;
 	data->strat = 0;
 	data->fd = 0;

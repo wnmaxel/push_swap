@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 12:30:39 by mariagracia       #+#    #+#             */
-/*   Updated: 2026/05/29 18:52:32 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/08 14:26:04 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	end = ft_lstlast(*lst);
 	end->next = new;
 	new->prev = end;
+}
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (lst == 0)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
