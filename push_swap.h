@@ -31,7 +31,6 @@ typedef struct s_ops
 	int				total;
 }					t_ops;
 
-
 typedef struct s_data
 {
 	t_list			*a;
@@ -70,14 +69,16 @@ int					ft_findc(char *str, char c);
 t_list				*fonction_simple(t_list **a);
 int					valid_sort(t_list **a);
 /////// mouvements
-void				sa(t_list **a, int print);
-void				sb(t_list **b, int print);
-void				ss(t_list **a, t_list **b);
-void				ra(t_list **a, int print);
-void				rb(t_list **b, int print);
-void				rr(t_list **a, t_list **b);
-void				rra(t_list **a, int print);
-void				rrb(t_list **b, int print);
-void				rrr(t_list **a, t_list **b);
+void				sa(t_list **a, int print, t_data *data);
+void				sb(t_list **b, int print, t_data *data);
+void				ss(t_list **a, t_list **b, t_data *data);
+void				pa(t_list **a, t_list **b, t_data *data);
+void				pb(t_list **b, t_list **a, t_data *data);
+void				ra(t_list **a, int print, t_data *data);
+void				rb(t_list **b, int print, t_data *data);
+void				rr(t_list **a, t_list **b, t_data *data);
+void				rra(t_list **a, int print, t_data *data);
+void				rrb(t_list **b, int print, t_data *data);
+void				rrr(t_list **a, t_list **b, t_data *data);
 
 #endif
