@@ -1,29 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   initit_free.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/28 16:34:25 by gerramir          #+#    #+#             */
-/*   Updated: 2026/06/08 22:06:28 by axweinma         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "push_swap.h"
-
-static t_list	*init_node(void)
-{
-	t_list	*node;
-
-	node = malloc(sizeof(t_list));
-	if (!node)
-		return (NULL);
-	node->num = 0;
-	node->prev = NULL;
-	node->next = NULL;
-	return (node);
-}
 
 static t_ops	*init_ops(void)
 {

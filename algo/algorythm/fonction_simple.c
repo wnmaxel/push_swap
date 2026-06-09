@@ -38,13 +38,18 @@ t_list	*fonction_simple(t_list **a)
 		while (count < swap - 1)
 		{
 			if ((*a)->num > (*a)->next->num)
+<<<<<<< HEAD:fonction_simple.c
 				sa(*a, 1);
+=======
+				sa(a, 1);
+>>>>>>> b254b15 (modif 999):algo/algorythm/fonction_simple.c
 			ra(a, 1);
 			count++;
 		}
 	}
 	return (*a);
 }
+<<<<<<< HEAD:fonction_simple.c
 
 // int m*ain(int *ac, ch*ar ***av)
 // {
@@ -63,3 +68,5 @@ t_list	*fonction_simple(t_list **a)
 //     fonction_simple(*a);
 //     return (0);
 // }
+=======
+>>>>>>> b254b15 (modif 999):algo/algorythm/fonction_simple.c

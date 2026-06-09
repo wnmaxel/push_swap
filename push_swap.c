@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/21 17:44:04 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/09 18:21:08 by axweinma         ###   ########.fr       */
+/*   Created: 2026/06/08 23:28:09 by axweinma          #+#    #+#             */
+/*   Updated: 2026/06/09 00:27:48 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-double	disorder(char **av)
+void	push_swap(t_data *data)
 {
-	int		j;
-	double	count;
-	double	des;
 
-	count = 0;
-	des = 0;
-	j = 1;
-	while (av[j + 1])
+	if (data->bench == 0)
 	{
-		if (atoi(av[j]) > atoi(av[j + 1]))
-			des++;
-		j++;
-		count++;
+        write(2, "bench21323\n", 11);
+		if (data->strat > 1)
+		{
+			if (data->strat == 2)
+				fonction_simple(&data->a);
+			// else if (data->strat == 3)
+			// 	fonction_medium(&data->a);
+			// else if (data->strat == 4)
+			// 	fonction_complex(&data->a);
+			// else if (data->strat == 5)
+			// 	fonction_adaptative(&data->a);
+		}
 	}
-	if (count == 0)
-		return (0);
-	return (des / count);
+    return ;
 }

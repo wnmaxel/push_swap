@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/21 15:03:02 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/08 19:24:32 by gerramir         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -66,6 +55,8 @@ static void	charto_int(char **num, t_list **numbers, t_list **seen)
 	{
 		if (!(verify_digit_repetition(num[j], seen)))
 		{
+			printf("erreur dans charto_int, num[j] = %s\n", num[j]);
+
 			write(2, "Error\n", 6);
 			return ;
 		}
@@ -103,12 +94,13 @@ static void	parse_args(int ac, char **av, t_data *data)
 
 int	main(int ac, char **av)
 {
-	t_data	*data;
-
+	t_data *data;
+	
 	if (ac < 2)
 		return (0);
 	data = init();
 	parse_args(ac, av, data);
+	push_swap(data);
 	ft_free(data);
 	return (0);
 }

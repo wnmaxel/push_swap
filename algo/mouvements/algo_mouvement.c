@@ -6,7 +6,7 @@
 /*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 17:41:52 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/08 14:21:34 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/09 19:11:04 by axweinma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,53 @@
 ///sa (swap a): Swap the first two elements at the top of stack a.
 //Do nothing if there is only one or no elements.
 
-void    sa(t_list *a, int print)// on lui envoie ladresse de la a pour pouvoir modifier directement la stack
+// void    sa(t_list *a, int print)// on lui envoie ladresse de la a pour pouvoir modifier directement la stack
+// {
+//     int tmp1;
+//     if(!a || !a->next)
+//         return;
+//     tmp1 = a->num;
+//     a->num = a->next->num;
+//     a->next->num = tmp1;
+//     if(print)
+//         write(1, "sa\n", 3);
+// }
+
+
+void    sa(t_list **a, int print)
 {
-    int tmp1;
-    if(!a || !a->next)
-        return;
-    tmp1 = a->num;
-    a->num = a->next->num;
-    a->next->num = tmp1;
-    if(print)
-        write(1, "sa", 2);
+    t_list *first;
+    t_list *second;
+
+    if (!a || !*a || !(*a)->next)
+        return ;
+    first = *a;
+    second = (*a)->next;
+    first->next = second->next;
+    second->next = first;
+    *a = second;
+    if (print)
+        write(1, "sa\n", 3);
 }
 
 
 /// sb (swap b): Swap the first two elements at the top of stack b.
 // Do nothing if there is only one or no elements.
 
-void    sb(t_list *b, int print)// on lui envoie ladresse de la a pour pouvoir modifier directement la stack
+void    sb(t_list **b, int print)// on lui envoie ladresse de la a pour pouvoir modifier directement la stack
 {
     int tmp1;
-    if(!b || !b->next)
+    if(!*b || !(*b)->next)
         return;
-    tmp1 = b->num;
-    b->num = b->next->num;
-    b->next->num = tmp1;
+    tmp1 = (*b)->num;
+    (*b)->num = (*b)->next->num;
+    (*b)->next->num = tmp1;
     if(print)
         write(1, "sb", 2);
 }
 
 /// ss (): sa and sb at the same time.
-void    ss(t_list *a, t_list *b)
+void    ss(t_list **a, t_list **b)
 {
     sa(a, 0);
     sb(b, 0);
@@ -86,32 +103,23 @@ void    pb(t_list **b, t_list **a)
 
 /// ra (rotate a): Shift up all elements of stack a by one.
 // The first element becomes the last one.
+
 void    ra(t_list **a, int print)
 {
-    t_list *tmp;        
-    if(!a || !*a)
-        return;
+    t_list *tmp;
+    t_list *last;
+    if (!a || !*a || !(*a)->next)
+        return ;
     tmp = *a;
     *a = (*a)->next;
-    while((*a)->next)
-        *a = (*a)->next;
-    (*a)->next = tmp;
+    last = *a;
+    while (last->next)
+        last = last->next;
+    last->next = tmp;
     tmp->next = NULL;
-    if(print)
-        write(1, "ra", 2);
+    if (print)
+        write(1, "ra\n", 3);
 }
-/*Comme on en a parlé — a = a->next à l'intérieur de la fonction ne modifie que la 
-copie locale de a. La vraie tête de liste dans ton main ne change pas.
-C'est le problème fondamental de ra comparé à sa — dans sa tu modifiait les 
-contenus des nœuds, donc pas besoin de changer la tête. Ici tu changes qui est la tête.
-
-Ce qu'il faut changer
-Juste la signature de ta fonction et les endroits où tu utilises a :
-
-t_list *a devient t_list **a
-a devient *a partout où tu accèdes à la tête
-a->next devient (*a)->next*/
-
 
 /// rb (rotate b): Shift up all elements of stack b by one.
 // The first element becomes the last one.
@@ -152,33 +160,14 @@ void rra(t_list **a, int print)
     tmp1 = *a;
     tmp2 = *a;
     while(tmp1->next->next)
-        tmp1 = tmp1->next; //avant dernier node
-    tmp3 = tmp1->next; // dernier
-    tmp3->next = tmp2; // le dernier passe premier
+        tmp1 = tmp1->next;
+    tmp3 = tmp1->next;
+    tmp3->next = tmp2; 
     tmp1->next = NULL;
     *a = tmp3;
     if(print)
         write(1, "rra", 3);
 }
-
-/*void rra(t_list **a)// avec previous warningggg warninggg
-{
-    t_list *tmp1;
-    t_list *tmp2;
-    t_list *tmp3;
-    if(!a)
-        return;
-    tmp1 = *a;
-    tmp2 = *a;
-    while(tmp1->next->next)
-        tmp1 = tmp1->next; //avant dernier node
-    tmp3 = tmp1->next; // dernier
-    tmp3->next = tmp2; // le dernier passe premier
-    tmp3->prev = NULL; // le nouveau premier pointe sur null en tant que previous
-    tmp1->next = NULL; // le nouveau dernier pointe sur NULL en tant que next
-}*/
-
-
 
 /// rrb (reverse rotate b): Shift down all elements of stack b by one.
 // The last element becomes the first one.
@@ -192,9 +181,9 @@ void rrb(t_list **b, int print)
     tmp1 = *b;
     tmp2 = *b;
     while(tmp1->next->next)
-        tmp1 = tmp1->next; //bvbnt dernier node
-    tmp3 = tmp1->next; // dernier
-    tmp3->next = tmp2; // le dernier pbsse premier
+        tmp1 = tmp1->next;
+    tmp3 = tmp1->next;
+    tmp3->next = tmp2;
     tmp1->next = NULL;
     *b = tmp3;
     if(print)
