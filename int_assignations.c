@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_assignations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 16:40:10 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/08 23:54:55 by axweinma         ###   ########.fr       */
+/*   Updated: 2026/06/12 17:14:13 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ t_list	*ft_lstnew(int content)
 	if (!new)
 		return (NULL);
 	new->num = content;
+	new->index = 0;
 	new->next = NULL;
-	new->prev = NULL;
 	return (new);
 }
 

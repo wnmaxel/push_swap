@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mariagraciaramirezku <mariagraciaramire    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/10 19:54:11 by gerramir          #+#    #+#             */
+/*   Updated: 2026/06/12 21:07:16 by mariagracia      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
@@ -11,8 +23,8 @@
 typedef struct s_list
 {
 	int				num;
+	int				index;
 	struct s_list	*next;
-	struct s_list	*prev;
 }					t_list;
 
 typedef struct s_ops
@@ -40,7 +52,6 @@ typedef struct s_data
 	int				bench;
 	int				strat;
 	int				fd;
-	int				segment;
 }					t_data;
 //////////////////////////// struct initialization and free
 t_data				*init(void);
@@ -49,6 +60,7 @@ void				ft_free(t_data *data);
 /////////////////////////// parsing
 
 void				push_swap(t_data *data);
+double				disorder(t_data *data);
 
 int					verify_digit_repetition(char *str, t_list **seen);
 int					ft_isdigit(int c);
@@ -66,17 +78,23 @@ t_list				*ft_lstlast(t_list *lst);
 size_t				ft_strlen(char *str);
 int					ft_findc(char *str, char c);
 //////// algo
-t_list				*fonction_simple(t_list **a);
+void				fonction_simple(t_data *data);
+void				fonction_complex(t_data *data);
 int					valid_sort(t_list **a);
+void				ft_putnbr_fd(int n, int fd);
+void				ft_putchar_fd(char c, int fd);
 /////// mouvements
 void				sa(t_list **a, int print, t_data *data);
 void				sb(t_list **b, int print, t_data *data);
 void				ss(t_list **a, t_list **b, t_data *data);
+
 void				pa(t_list **a, t_list **b, t_data *data);
 void				pb(t_list **b, t_list **a, t_data *data);
+
 void				ra(t_list **a, int print, t_data *data);
 void				rb(t_list **b, int print, t_data *data);
 void				rr(t_list **a, t_list **b, t_data *data);
+
 void				rra(t_list **a, int print, t_data *data);
 void				rrb(t_list **b, int print, t_data *data);
 void				rrr(t_list **a, t_list **b, t_data *data);

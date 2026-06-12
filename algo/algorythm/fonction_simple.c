@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   fonction_simple.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: *axweinm*a <*axweinm*a@student.42.fr>          +#+  +:+       +#+        */
+/*   By: *axweinm*a <*axweinm*a@student.42.fr>          +#+  +:+      
+	+#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Cre*ated: 2026/05/25 14:03:46 by *axweinm*a          #+#    #+#             */
 /*   Upd*ated: 2026/06/08 23:08:57 by *axweinm*a         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-int	valid_sort(t_list **a)
+int	is_sort(t_list *a)
 {
 	t_list	*tmp;
 
-	tmp = *a;
+	tmp = a;
+	if (!a)
+		return (1);
 	while (tmp->next)
 	{
 		if (tmp->num > tmp->next->num)
@@ -25,48 +27,82 @@ int	valid_sort(t_list **a)
 	}
 	return (1);
 }
-
-t_list	*fonction_simple(t_list **a)
+void	assign_index(t_list **a)
 {
-	int	count;
-	int swap;
-	
-	swap = ft_lstsize(*a);
-	while (!valid_sort(a))
+	int		i;
+	t_list	*tmp;
+
+	if (!a || !*a)
+		return ;
+	tmp = *a;
+	i = 0;
+	while (tmp)
 	{
-		count = 0;
-		while (count < swap - 1)
-		{
-			if ((*a)->num > (*a)->next->num)
-<<<<<<< HEAD:fonction_simple.c
-				sa(*a, 1);
-=======
-				sa(a, 1);
->>>>>>> b254b15 (modif 999):algo/algorythm/fonction_simple.c
-			ra(a, 1);
-			count++;
-		}
+		tmp->index = i;
+		tmp = tmp->next;
+		i++;
 	}
-	return (*a);
 }
-<<<<<<< HEAD:fonction_simple.c
+int	position_min(t_list *a)
+{
+	int		value;
+	int		nbr;
+	t_list	*tmp;
 
-// int m*ain(int *ac, ch*ar ***av)
-// {
-//     t_list  ***a;
-//     int     j;
+	tmp = a;
+	value = tmp->index;
+	nbr = tmp->num;
+	while (tmp)
+	{
+		if (nbr > tmp->num)
+		{
+			value = tmp->index;
+			nbr = tmp->num;
+		}
+		tmp = tmp->next;
+	}
+	return (value);
+}
 
-//     **a = NULL;
-//     j = 1;
-//     if (*ac < 2)
-//         return (0);
-//     while (*av[j])
-//     {
-//         **a = ft_lst*add_b*ack();
-//         j++;
-//     }
-//     fonction_simple(*a);
-//     return (0);
-// }
-=======
->>>>>>> b254b15 (modif 999):algo/algorythm/fonction_simple.c
+//pour verifier
+void	print_stack(t_list *a)
+{
+	t_list	*tmp;
+
+	tmp = a;
+	while (tmp)
+	{
+		ft_putnbr_fd(tmp->num, 1);
+		write(1, " ", 1);
+		tmp = tmp->next;
+	}
+	write(1, "\n", 1);
+}
+
+void	fonction_simple(t_data *data)
+{
+	int pos;
+	int size;
+
+	while (ft_lstsize(data->a) > 1)
+	{
+		// if (is_sort(*a) && !*b)
+		//     break ;
+		size = ft_lstsize(data->a);
+		assign_index(data->a);
+		pos = position_min(data->a);
+		while (pos != 0)
+		{
+			if (pos <= size / 2)
+				ra(&data->a, 1, data);
+			else
+				rra(&data->a, 1, data);
+			assign_index(data->a);
+			pos = position_min(data->a);
+		}
+		pb(&data->b, &data->a, data);
+	}
+	while (data->b)
+		pa(&data->a, &data->b, data);
+	print_stack(data->a);
+}

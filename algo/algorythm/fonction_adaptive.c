@@ -1,28 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   fonction_adaptive.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mariagraciaramirezku <mariagraciaramire    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/08 23:28:09 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/12 21:56:37 by mariagracia      ###   ########.fr       */
+/*   Created: 2026/06/10 21:33:59 by gerramir          #+#    #+#             */
+/*   Updated: 2026/06/12 19:22:04 by mariagracia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_data *data)
+static double	disorder(t_data *data)
 {
+	t_list	*tmp;
+	double	count;
+	double	des;
 
-	if (data->strat == 2)
+	count = 0;
+	des = 0;
+	tmp = data->a;
+	while (tmp && tmp->next)
+	{
+		if (tmp->num > tmp->next->num)
+			des++;
+		tmp = tmp->next;
+		count++;
+	}
+	if (count == 0)
+		return (0);
+	return (des / count);
+}
+
+void	fonction_adaptive(t_data *data)
+{
+	double	dis;
+
+	dis = disorder(data);
+	if (dis == 0)
+		return ;
+	else if (dis <= 0.2)
 		fonction_simple(data);
-	else if (data->strat == 3)
+	else if (dis <= 0.5)
 		fonction_medium(data);
-	else if (data->strat == 4)
+	else
 		fonction_complex(data);
-	else if (data->strat == 5)
-		fonction_adaptive(data);
-	else if (data->strat == 0 && !data->bench)
-		fonction_adaptive(data);
 }

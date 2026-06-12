@@ -6,7 +6,7 @@
 /*   By: gerramir <gerramir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 12:30:39 by mariagracia       #+#    #+#             */
-/*   Updated: 2026/06/08 18:43:43 by gerramir         ###   ########.fr       */
+/*   Updated: 2026/06/10 19:53:21 by gerramir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	end = ft_lstlast(*lst);
 	end->next = new;
-	new->prev = end;
 }
 
 t_list	*ft_lstlast(t_list *lst)
@@ -47,7 +46,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		return ;
 	}
 	new->next = *lst;
-	(*lst)->prev = new;
 	*lst = new;
 }
 

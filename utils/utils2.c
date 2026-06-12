@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mariagraciaramirezku <mariagraciaramire    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/12 19:16:00 by mariagracia       #+#    #+#             */
+/*   Updated: 2026/06/12 19:16:07 by mariagracia      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -23,4 +33,24 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 	}
 	return (size);
+}
+
+void    ft_putnbr_fd(int n, int fd)
+{
+    long    nb;
+
+    nb = n;
+    if (nb < 0)
+    {
+        nb = -nb;
+        ft_putchar_fd('-', fd);
+    }
+    if (nb > 9)
+        ft_putnbr_fd(nb / 10, fd);
+    ft_putchar_fd((nb % 10) + '0', fd);
+}
+
+void    ft_putchar_fd(char c, int fd)
+{
+    write(fd, &c, 1);
 }

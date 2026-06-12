@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: axweinma <axweinma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mariagraciaramirezku <mariagraciaramire    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/21 17:44:04 by axweinma          #+#    #+#             */
-/*   Updated: 2026/06/09 18:21:08 by axweinma         ###   ########.fr       */
+/*   Created: 2026/06/12 21:31:09 by mariagracia       #+#    #+#             */
+/*   Updated: 2026/06/12 21:57:49 by mariagracia      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-double	disorder(char **av)
+void    bench(t_data *data)
 {
-	int		j;
-	double	count;
-	double	des;
-
-	count = 0;
-	des = 0;
-	j = 1;
-	while (av[j + 1])
-	{
-		if (atoi(av[j]) > atoi(av[j + 1]))
-			des++;
-		j++;
-		count++;
-	}
-	if (count == 0)
-		return (0);
-	return (des / count);
+    if (!data->bench)
+        return ;
+    else if (data->bench)
+    {
+        
+    }
 }

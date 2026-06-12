@@ -11,7 +11,7 @@ int	valid_flag(char *av)
 		return (3);
 	else if (ft_strcmp(av, "--complex") == 0)
 		return (4);
-	else if (ft_strcmp(av, "--adaptative") == 0)
+	else if (ft_strcmp(av, "--adaptive") == 0)
 		return (5);
 	write(2, "Error\n", 6);
 	return (0);
@@ -94,13 +94,14 @@ static void	parse_args(int ac, char **av, t_data *data)
 
 int	main(int ac, char **av)
 {
-	t_data *data;
-	
+	t_data	*data;
+
 	if (ac < 2)
 		return (0);
 	data = init();
 	parse_args(ac, av, data);
 	push_swap(data);
+	bench(data);
 	ft_free(data);
 	return (0);
 }
